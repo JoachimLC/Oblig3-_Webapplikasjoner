@@ -1,0 +1,55 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id       String   @id @default(cuid())
+  name     String
+  email    String   @unique
+  admin    Int      @default(0)
+}
+
+model Project {
+  id           String   @id @default(cuid())
+  published    Int      @default(0)
+  title        String
+  description  String
+  technologies String
+  link         String
+  dateMade     String
+  media        Media?   @relation(fields: [mediaId], references: [media_id])
+  mediaId      String?  @unique
+}
+
+model Media {
+  media_id         String   @id
+  media_type       String
+  media_url        String
+  media_description String 
+  project          Project? @relation
+}
+
+model Student {
+  id              String      @id @default(cuid())
+  name            String
+  degree          String
+  points          Int
+  email           String      @unique
+  experiences     Experience[]
+}
+
+model Experience {
+  id          String   @id @default(cuid())
+  description String  
+  studentId   String  
+  student     Student  @relation(fields: [studentId], references: [id]) 
+}

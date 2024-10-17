@@ -1,0 +1,17 @@
+Oppgave 1.3 Vurder komponent komposisjonen
+
+Fra forrige innlevering hadde jeg header med navigasjon som statisk innhold i html filen. 
+Dette har jeg fikset, og laget egne komponenter for nav, header og footer. Jeg måtte dermed endre navn på header til studentinfo til studentheader.
+Jeg har også fikset på semantiske tager, slik som å gjøre relevante seksjoner om  til aside, og fjerne tittel komponenten til fordel for å bare ha h2 tittel inne i komponenten selv.
+
+En refaktoriering jeg kunne gjort er å ha en knapp under prosjekt komponenten min "vis flere". 
+Som standard så vises kun 3 prosjekter, også kan man skimte halvtransparente prosjekter under knappen.
+Alternativt kunne man hatt sideinndeling for prosjektkortene, med en pil som blar til høyre for å scrolle 3 nye prosjekter inn på et slags rullebånd gjennom en animasjon.
+
+Dette vil se mer oversiktlig ut etterhvert som man har flere prosjekter, slik at man slipper å bla så langt nedover på siden for å se resten av komponentene.
+Samtidig krever jo dette at brukeren må klikke mer for å se gjennom prosjektene, så det kan være tregere å få en oversikt over hvilke og hvor mange prosjekter som finnes.
+
+
+ProjectsPerTechnology kunne vært plassert inne i Prosjects, da disse to tar inn samme parameter, og innholdet deres vil alltid henge sammen uansett. Om man senere vil legge til
+mulighet for å filtrere prosjekter basert på teknologi, kan denne logikken plasseres i Projects og deretter brukes direkte for å oppdatere ProjectsPerTechnology også.
+På den andre siden vil dette føre til mindre fleksibilitet, og det er mer jobb om man ønsker å flytte rundt på komponentene som henger sammen med prosjekter. 
